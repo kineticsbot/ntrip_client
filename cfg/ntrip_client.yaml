@@ -1,0 +1,26 @@
+ntrip_client:
+  ros__parameters:
+    host: "cors.tencent.com" 
+    port: 8002
+    mountpoint: "RTCM32_GRECJ2"
+    authenticate: True
+    username: "dlsjtkkk"
+    password: "36030195"
+    ssl: False
+    cert: "None"
+    key: "None"
+    ca_cert: "None"
+    rtcm_frame_id: "odom"
+    nmea_max_length: 82
+    nmea_min_length: 3
+    rtcm_message_package: "rtcm_msgs"
+    reconnect_attempt_max: 10
+    reconnect_attempt_wait_seconds: 5
+
+    rtcm_timeout_second: 4
+
+    rtcm_topic_name: "rtcm"
+    nmea_topic_name: "nmea_sentence"
+
+
+
