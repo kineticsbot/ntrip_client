@@ -11,7 +11,7 @@ ntrip_client:
     key: "None"
     ca_cert: "None"
     rtcm_frame_id: "odom"
-    nmea_max_length: 82
+    nmea_max_length: 102
     nmea_min_length: 3
     rtcm_message_package: "rtcm_msgs"
     reconnect_attempt_max: 10

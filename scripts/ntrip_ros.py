@@ -4,6 +4,7 @@ import os
 import sys
 import json
 import importlib.util
+import serial
 
 import rclpy
 from rclpy.node import Node
@@ -63,7 +64,9 @@ class NTRIPRos(Node):
     host = self.get_parameter('host').value
     port = self.get_parameter('port').value
     mountpoint = self.get_parameter('mountpoint').value
-
+    serial_port = '/dev/ttyUSB0'
+    serial_baud = 115200 
+    self._gps_port = serial.Serial(port=serial_port, baudrate=serial_baud, timeout=2)
     # Optionally get the ntrip version from the launch file
     ntrip_version = self.get_parameter('ntrip_version').value
     if ntrip_version == 'None':
@@ -173,6 +176,7 @@ class NTRIPRos(Node):
   def publish_rtcm(self):
     for raw_rtcm in self._client.recv_rtcm():
       self._rtcm_pub.publish(self._create_rtcm_message(raw_rtcm))
+      self._gps_port.write(raw_rtcm)
 
   def _create_mavros_msgs_rtcm_message(self, rtcm):
     return mavros_msgs_RTCM(

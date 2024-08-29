@@ -47,7 +47,7 @@ def generate_launch_description():
                 package='ntrip_client',
                 executable='ntrip_ros.py',
                 emulate_tty=True,
-                output='screen'
+                output='screen',
                 parameters=[
                     config_file
                 #   {
